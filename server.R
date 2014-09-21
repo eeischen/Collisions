@@ -3,13 +3,9 @@
 options(shiny.maxRequestSize=72*1024^2)
 #Include packages
 require(devtools)
-#library(rCharts)
-#library(manipulate)
 library(shiny)
-suppressPackageStartupMessages(library(googleVis))
+library(googleVis)
 require(googleVis)
-#library(reshape)
-#library(UsingR)
 
 #The collisions data was downloaded from 
 #https://data.cityofnewyork.us/NYC-BigApps/NYPD-Motor-Vehicle-Collisions/h9gi-nx95
@@ -31,23 +27,22 @@ allzipcode<-collisions$zip.code
 zipcode<-allzipcode[!is.na(allzipcode)]
 zip<-unique(zipcode)
 zip<-zip[order(zip)]
-#zip<-as.list(zip)
+zip<-as.list(zip)
+names(zip)<-as.character(zip)
 
 #cleaning and organizing the dates
 alldates<-as.Date(collisions$date, "%m/%d/%Y")
 dates<-unique(alldates)
 dates<-dates[order(dates)]
-startdate<-dates[1]
-enddate<-dates[length(dates)]
 
 
 shinyServer(
   function(input, output){
     #print selected zip codes
-    output$inputValue1<-renderPrint({input$zip})
+    output$inputValue1<-renderPrint({input$zipinput})
     
     #get indices for rows corresponding to selected dates and zip codes
-    inzip<-reactive({allzipcode %in% input$zip})
+    inzip<-reactive({allzipcode %in% input$zipinput})
     daterange<-reactive({seq(input$date[1], input$date[2], by="day")})
     indates<-reactive({alldates %in% daterange()})
     datesandzip<-reactive({indates()&inzip()})

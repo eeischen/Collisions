@@ -10,10 +10,9 @@ shinyUI(
     #Use variants on html commands to design sidebar panel
     sidebarPanel(
       h3("Enter zip code(s) and a range of dates."),
-      selectInput('zip', 'ZIP Code: Select as many New York City zip codes as you wish.', zip, selected=10025, multiple=TRUE),
+      selectInput('zipinput', 'ZIP Code: Select as many New York City zip codes as you wish.', choices=list("10025"=10025, "10000"=10000), selected=10025, multiple=TRUE),
       dateRangeInput('date', 'Date Range: Select a start date and an end date between July 1, 2012 and September 7, 2014.', 
-                     min=startdate, max=enddate, start=startdate, end=enddate),
-      #actionButton("goButton", "Submit")
+                     min="2012-07-01", max="2014-09-07", start="2012-07-01", end="2014-09-07"),
       h3('Documentation'),
       p('This app computes the number of collisions in specified New York City (NYC) zip codes
         during specified date ranges.  The user selects the zip codes and a range of dates
