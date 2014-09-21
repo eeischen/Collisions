@@ -5,7 +5,8 @@ shinyUI(
   pageWithSidebar(
     #Application title
     headerPanel(
-    h1("Collisions in New York City",align="center")
+    h1("Collisions in New York City",align="center"),
+    windowTitle = "Collisions in New York City"
     ),
     #Use variants on html commands to design sidebar panel
     sidebarPanel(
