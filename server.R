@@ -31,7 +31,7 @@ allzipcode<-collisions$zip.code
 zipcode<-allzipcode[!is.na(allzipcode)]
 zip<-unique(zipcode)
 zip<-zip[order(zip)]
-zip<-as.list(zip)
+#zip<-as.list(zip)
 
 #cleaning and organizing the dates
 alldates<-as.Date(collisions$date, "%m/%d/%Y")
