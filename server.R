@@ -1,13 +1,15 @@
 #The server code for my NYC collisions app.
+#Allow large dataset
+options(shiny.maxRequestSize=72*1024^2)
 #Include packages
 require(devtools)
-library(rCharts)
-library(manipulate)
+#library(rCharts)
+#library(manipulate)
 library(shiny)
 suppressPackageStartupMessages(library(googleVis))
 require(googleVis)
-library(reshape)
-library(UsingR)
+#library(reshape)
+#library(UsingR)
 
 #The collisions data was downloaded from 
 #https://data.cityofnewyork.us/NYC-BigApps/NYPD-Motor-Vehicle-Collisions/h9gi-nx95
