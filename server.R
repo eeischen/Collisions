@@ -39,7 +39,7 @@ dates<-dates[order(dates)]
 shinyServer(
   function(input, output, session){
     zipreactive<-reactive({zip})
-    observe({updateSelectInput(session, "zipinput", choices=zipreactive())}
+    observe({updateSelectInput(session, "zipinput", choices=zipreactive(), selected=10025)}
       )
     
     #print selected zip codes
